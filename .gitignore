@@ -1,0 +1,14 @@
+# Keep deployment state and credentials out of this documentation repository.
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.log
+*.pem
+*.key
+__pycache__/
+runtime/
+outbox/
+private/

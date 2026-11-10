@@ -1,0 +1,48 @@
+{
+  "format": "documentation-only-not-a-loader-schema",
+  "enabled": false,
+  "project": "<verified-project-id>",
+  "detection": {
+    "interval_hours": 12,
+    "timezone": "Asia/Singapore",
+    "local_times": ["00:00", "12:00"],
+    "baseline_on_start_or_recovery": true,
+    "automatic_backfill": false
+  },
+  "worker": {
+    "starts_per_local_day": 10,
+    "concurrency": 1,
+    "shared_memory_and_skill_attempt": true,
+    "local_wait_seconds": 300,
+    "service_ceiling_seconds": 5400,
+    "unknown_effect": "fence-and-reconcile-original-no-auto-retry",
+    "hard_cap_on_model_requests_or_tokens": false
+  },
+  "source_material": {
+    "max_unique_body_turns": 32,
+    "max_cumulative_utf8_bytes": 32768,
+    "byte_budget_includes": ["seed", "delivered_history_metadata_pages", "supplemental_bodies"],
+    "byte_budget_excludes": ["control_status", "verification_metadata", "prompt_wrappers", "model_internal_requests_and_tokens"],
+    "truncate_to_fit": false,
+    "verify_all_delivered_sources": true,
+    "reserve_before_delivery": true,
+    "reset_budget_on_tool_restart": false
+  },
+  "writer": {
+    "bank": "<own-bank>",
+    "owner": "<authorized-owner>",
+    "source_file_max_bytes": 16384,
+    "candidate_characters": {"min": 8, "max": 4000},
+    "append_only": true,
+    "immutable_outbox_required": true,
+    "completed_receipt_required": true
+  },
+  "skill_draft": {
+    "install_automatically": false,
+    "instruction_only": true,
+    "outside_discovery_directories": true,
+    "max_drafts": 16,
+    "max_total_bytes": 262144,
+    "max_each_bytes": 16384
+  }
+}
